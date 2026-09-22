@@ -88,7 +88,9 @@ GROUP_TO_TEMPLATE_COL = {
 }
 
 # Thứ tự 7 cột lâm sàng M..S trong khung mẫu (dùng để tính Xếp loại = max)
-TEMPLATE_CLINICAL_COLS = ["Nội", "Ngoại", "Da liễu", "Sản phụ khoa", "Mắt", "TMH", "RHM"]
+# Nhãn đúng như khung mẫu gốc (file BTH_KSK thật): "Tai mũi họng" / "Răng hàm mặt"
+# đầy đủ, không viết tắt TMH/RHM trên header.
+TEMPLATE_CLINICAL_COLS = ["Nội", "Ngoại", "Da liễu", "Sản phụ khoa", "Mắt", "Tai mũi họng", "Răng hàm mặt"]
 
 # ---------------------------------------------------------------------------
 # Xét nghiệm máu / nước tiểu / CTM / siêu âm (vùng cột ED trở đi)
@@ -228,3 +230,17 @@ NORMAL_KEYWORDS = [
 ]
 
 DEFAULT_NGUOI_LAP_BANG = "Nguyễn Thị Ngọc Sương"
+
+# Tên rút gọn dùng trong câu Cảnh báo (khớp văn phong khung mẫu thật, vd
+# "ALT (46) và AST (44) in đậm do vượt giá trị tham chiếu — kiểm tra lại."
+# thay vì lặp lại tên cột đầy đủ "ALT(GPT)").
+CHEM_SHORT_NAME = {
+    "ALT(GPT)": "ALT",
+    "AST(GOT)": "AST",
+    "Creatinin": "Creatinin",
+    "Glucose": "Glucose",
+    "Cholesterol toàn phần": "Cholesterol",
+    "Triglycerid": "Triglycerid",
+    "HDL-Cholesterol": "HDL",
+    "LDL-Cholesterol": "LDL",
+}

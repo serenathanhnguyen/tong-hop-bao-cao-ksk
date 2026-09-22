@@ -72,7 +72,7 @@ def test_pipeline_end_to_end():
             ws.cell(row=r, column=canh_bao_col).value or ""
             for r in range(DATA_START_ROW, DATA_START_ROW + 3)
         ]
-        assert any("chưa xác định" in v for v in canh_bao_values)
+        assert any("chưa có chẩn đoán xác định" in v for v in canh_bao_values)
 
 
 if __name__ == "__main__":

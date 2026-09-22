@@ -91,13 +91,14 @@ def compute_clinical_columns(p: Person) -> dict[str, int | None]:
 
 def compute_xep_loai(clinical_cols: dict[str, int | None]) -> tuple[int | None, str]:
     """Xếp loại = max(Nội..RHM). Đây là quy tắc TỰ SUY RA (không có sẵn trong
-    dữ liệu thô M03), nên luôn trả về ghi chú cảnh báo kèm theo."""
-    vals = {k: v for k, v in clinical_cols.items() if v is not None}
+    dữ liệu thô M03), nên luôn trả về ghi chú cảnh báo kèm theo — đúng văn
+    phong cố định dùng trong khung mẫu thật: "Xếp loại tự tính = max(Nội..RHM)
+    = {n} — kiểm tra lại." (không liệt kê từng giá trị)."""
+    vals = [v for v in clinical_cols.values() if v is not None]
     if not vals:
         return None, ""
-    xep_loai = max(vals.values())
-    detail = ", ".join(f"{k}={v}" for k, v in vals.items())
-    note = f"Xếp loại tự tính = max({detail}) = {xep_loai} — kiểm tra lại."
+    xep_loai = max(vals)
+    note = f"Xếp loại tự tính = max(Nội..RHM) = {xep_loai} — kiểm tra lại."
     return xep_loai, note
 
 
